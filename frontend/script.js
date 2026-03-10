@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     courseTitles = document.getElementById('courseTitles');
     
     setupEventListeners();
-    createNewSession();
+    createNewSession(false);
     loadCourseStats();
 });
 
@@ -30,6 +30,9 @@ function setupEventListeners() {
     });
     
     
+    // New Chat button
+    document.getElementById('newChatBtn').addEventListener('click', () => createNewSession());
+
     // Suggested questions
     document.querySelectorAll('.suggested-item').forEach(button => {
         button.addEventListener('click', (e) => {
@@ -146,7 +149,14 @@ function escapeHtml(text) {
 
 // Removed removeMessage function - no longer needed since we handle loading differently
 
-async function createNewSession() {
+async function createNewSession(clearBackend = true) {
+    if (clearBackend && currentSessionId) {
+        try {
+            await fetch(`${API_URL}/session/${currentSessionId}`, { method: 'DELETE' });
+        } catch (e) {
+            // Non-critical — old session will be orphaned
+        }
+    }
     currentSessionId = null;
     chatMessages.innerHTML = '';
     addMessage('Welcome to the Course Materials Assistant! I can help you with questions about courses, lessons and specific content. What would you like to know?', 'assistant', null, true);
