@@ -483,6 +483,8 @@ header h1 {
     width: 100%;
     background: none;
     border: none;
+    -webkit-appearance: none;
+    appearance: none;
     padding: 0.5rem 0;
     color: var(--text-secondary);
     font-size: 0.875rem;
@@ -536,6 +538,7 @@ header h1 {
     display: none;
 }
 
+.new-chat-btn::before,
 .stats-header::before,
 .suggested-header::before {
     content: '▶';
