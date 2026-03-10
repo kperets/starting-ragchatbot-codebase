@@ -101,10 +101,14 @@ class CourseSearchTool(Tool):
             header += "]"
             
             # Track source for the UI
-            source = course_title
+            lesson_link = meta.get('lesson_link', '')
+            source_label = course_title
             if lesson_num is not None:
-                source += f" - Lesson {lesson_num}"
-            sources.append(source)
+                source_label += f" - Lesson {lesson_num}"
+            if lesson_link:
+                sources.append(f'<a href="{lesson_link}" target="_blank" rel="noopener noreferrer">{source_label}</a>')
+            else:
+                sources.append(source_label)
             
             formatted.append(f"{header}\n{doc}")
         

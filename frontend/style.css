@@ -241,8 +241,40 @@ header h1 {
 }
 
 .sources-content {
-    padding: 0 0.5rem 0.25rem 1.5rem;
+    padding: 0.25rem 0.5rem 0.25rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.sources-content a {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--primary-color);
+    font-size: 0.72rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.sources-content a:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+}
+
+.sources-content .source-plain {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
     color: var(--text-secondary);
+    font-size: 0.72rem;
+    white-space: nowrap;
 }
 
 /* Markdown formatting styles */
