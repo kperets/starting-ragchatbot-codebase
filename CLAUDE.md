@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Package Management
+
+Always use `uv` to run the server and manage dependencies. Never use `pip` directly.
+
 ## Commands
 
 **Setup:**
